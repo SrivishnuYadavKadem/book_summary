@@ -1,0 +1,46 @@
+# How to push your repository to GitHub
+
+1. Create a new repository on GitHub:
+   - Go to https://github.com/new
+   - Enter "book_summary" as the repository name
+   - Choose public or private visibility
+   - Click "Create repository"
+
+2. Add the remote repository URL to your local repository:
+   ```
+   git remote add origin https://github.com/YOUR_USERNAME/book_summary.git
+   ```
+   Replace YOUR_USERNAME with your GitHub username
+
+3. Push your code to GitHub:
+   ```
+   git push -u origin master
+   ```
+   Or if you renamed your branch to main:
+   ```
+   git push -u origin main
+   ```
+
+4. Enter your GitHub credentials when prompted
+
+Your code is now on GitHub!
+
+# Optional: Rename the default branch from 'master' to 'main'
+If you prefer to use 'main' instead of 'master' as your default branch name:
+
+1. Rename the branch locally:
+   ```
+   git branch -m master main
+   ```
+
+2. Push the renamed branch to GitHub:
+   ```
+   git push -u origin main
+   ```
+
+3. Set the default branch on GitHub:
+   - Go to your repository on GitHub
+   - Click on "Settings"
+   - Click on "Branches"
+   - Change the default branch to "main"
+   - Click "Update"

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Summary Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Book Summary Platform</h1>
+            <p>Upload a PDF document to get an AI-generated summary</p>
+        </header>
+        
+        <main>
+            <section class="upload-section">
+                <form id="upload-form">
+                    <div class="file-input">
+                        <label for="pdf-file">Upload PDF</label>
+                        <input type="file" id="pdf-file" name="file" accept=".pdf" required>
+                        <p id="file-name">No file selected</p>
+                    </div>
+                    
+                    <div class="options">
+                        <h3>Summary Options</h3>
+                        <div class="option-group">
+                            <label>Summary Length:</label>
+                            <div class="radio-group">
+                                <input type="radio" id="short" name="length" value="short">
+                                <label for="short">Short</label>
+                                
+                                <input type="radio" id="medium" name="length" value="medium" checked>
+                                <label for="medium">Medium</label>
+                                
+                                <input type="radio" id="long" name="length" value="long">
+                                <label for="long">Long</label>
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label for="target-language">Target Language:</label>
+                            <select id="target-language" name="target_language">
+                                <option value="">Auto-detect (Original)</option>
+                                <option value="en">English</option>
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                                <option value="zh">Chinese</option>
+                                <option value="ja">Japanese</option>
+                                <option value="ru">Russian</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" id="submit-btn">Generate Summary</button>
+                </form>
+            </section>
+            
+            <section class="result-section" id="result-section" style="display: none;">
+                <div class="summary-container">
+                    <div class="summary-header">
+                        <h2>Summary</h2>
+                        <div class="summary-meta">
+                            <p id="reading-time"></p>
+                            <p id="language-info"></p>
+                        </div>
+                    </div>
+                    <div class="summary-content" id="summary-content"></div>
+                    
+                    <div class="summary-insights">
+                        <div class="topics-section">
+                            <h3>Key Topics</h3>
+                            <div id="topics-container"></div>
+                        </div>
+                        
+                        <div class="keywords-section">
+                            <h3>Keywords</h3>
+                            <div id="keywords-container"></div>
+                        </div>
+                        
+                        <div class="quality-section">
+                            <h3>Quality Metrics</h3>
+                            <div id="quality-metrics"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="save-container">
+                        <button id="save-btn">Save Summary</button>
+                        <p class="save-note">Click to save this summary for future reference</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="saved-summaries">
+                <h2>Saved Summaries</h2>
+                <div id="summaries-list"></div>
+            </section>
+        </main>
+        
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Generating summary...</p>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
